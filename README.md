@@ -6,12 +6,13 @@ DIY config file management on MacOS and Linux
 
 - Create `.dotfiles` directory wherever you want
 - Export `$BASEPATH` and `$DOTFILES` in your `.bash_profile`
+    - `$BASEPATH` can just be `$HOME` if you want, I prefer to work from a non-home directory on MacOS
 ```bash
 export BASE="dev"
 export BASEPATH="${HOME}/${BASE}" 
 export DOTFILES="${BASEPATH}/.dotfiles"
 ```
-    - `$BASEPATH` can just be `$HOME` if you want, I prefer to work from a non-home directory on MacOS
+
 - Source `.bashrc` in `.bash_profile`
 ```bash
 if [ -f "$HOME/.bashrc" ]; then
