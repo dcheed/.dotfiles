@@ -1,0 +1,57 @@
+# Declare functions
+
+# Backup file as a copy
+bak() {
+    if [ -f $1 ];
+    then
+        newname=$1.`date +%Y-%m-%d.%H%M.bak`
+        mv $1 $newname
+        echo "Backed up $1 to $newname"
+        cp -p $newname ~/backups/$1
+    else
+        echo "$1 does not exist or is not a regular file"
+    fi
+}
+
+# Find string in all files starting in current path
+# Show files + line numbers
+# arg $2 optional file type
+ffind() {
+    string=$1;
+    filetype=$2;
+    if [[ -n $2 ]]
+    then
+        find . -type f -name "*.$filetype" -print0 |
+            xargs -0 grep --color=auto -H $string;
+    else
+        find . -type f -print0 |
+            xargs -0 grep --color=auto -H $string;
+    fi
+}
+
+# Make new directory
+mk() {
+    mkdir -p "$@"
+}
+
+# Make new directory and enter it
+mkcd() {
+    mkdir -p "$@" && cd "$@"
+}
+
+# Backup directory as gzip tar
+tbak() {
+    newname=$1.`date +%Y-%m-%d.%H%M.bak.tar.gz`;
+    if [ -d $1 ];
+    then
+        tar -zcpf ~/backups/$newname $1;
+        echo "Compressed and backed up $1 to ~/backups/$newname";
+    else
+        echo "$1 does not exist or is not a directory";
+    fi
+}
+
+vurl() {
+    curl -s $1 | vim -
+}
+

@@ -1,0 +1,40 @@
+# colorful ls
+export CLICOLOR=1
+alias l='ls -CFG'
+alias la='ls -AFG'
+alias ls='ls -G'
+alias ll='ls -AlFG' 
+
+# navigation
+alias cdd="cd ${BASEPATH}"
+alias cdc="cd ${BASEPATH}/projects/learnc"
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# colorful grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# human readable sizes
+alias df='df -h'
+alias du='du -h'
+
+# source .bashrc
+alias src='source ~/.bashrc'
+alias version='echo "BASH_VERSION: $BASH_VERSION"'
+
+alias cat='bat'
+alias copy='pbcopy'
+alias vimn='vim -u NONE -N'
+
+# python
+alias python3='python3 -q'
+alias py1p='cd ~/dev/projects/py1p'
+alias zen='python3 -c "import this" | less'
+alias venv='python3 -m venv venv'
+alias act='. venv/bin/activate'
+alias deact='deactivate'
+alias ipy='ipython'
+
